@@ -33,9 +33,6 @@
 // buffer to hold serial commands
 String readString;
 
-
-
-
 void setup() {
 
   getEepromAddresses();
