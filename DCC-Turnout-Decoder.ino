@@ -43,8 +43,6 @@ void setup() {
   
   getEepromValues();
 
-
-
   DECODER_ADDRESS_1 = cvStruct.cv1;
   DECODER_ADDRESS_2 = DECODER_ADDRESS_1 + 1;
 
@@ -57,7 +55,6 @@ void setup() {
   // Initialize the decoder:
 
   DCC.SetBasicAccessoryDecoderPacketHandler(BasicAccDecoderPacket_Handler, true); 
-//  DCC.SetupDecoder(0x00, 0x00, DCC_INTERRUPT);
   DCC.SetupDecoder(cvStruct.cv8, cvStruct.cv7, DCC_INTERRUPT);
 
   Wire.begin();
@@ -83,10 +80,6 @@ void setup() {
   Wire.write(0x00); // set all of port B to outputs
   Wire.endTransmission();
 
-
-
-
-
   // Set the turnouts straight
   BasicAccDecoderPacket_Handler(DECODER_ADDRESS_1, true, 0x00);
   BasicAccDecoderPacket_Handler(DECODER_ADDRESS_1, true, 0x02);
@@ -96,8 +89,6 @@ void setup() {
   BasicAccDecoderPacket_Handler(DECODER_ADDRESS_2, true, 0x02);
   BasicAccDecoderPacket_Handler(DECODER_ADDRESS_2, true, 0x04);
   BasicAccDecoderPacket_Handler(DECODER_ADDRESS_2, true, 0x06);
-
-
 
 }
 
