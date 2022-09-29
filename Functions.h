@@ -1,7 +1,7 @@
 //Functions.h
 
 void BasicAccDecoderPacket_Handler(int address, boolean activate, byte data) 
-{ 
+{
   Serial.print("    ");
   Serial.print(address);
   Serial.print(" - ");

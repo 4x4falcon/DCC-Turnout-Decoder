@@ -2,6 +2,10 @@
  * Eeprom.h
  */
 
+/*
+ * get eeprom addresses
+ */
+
 void getEepromAddresses()
  {
 
@@ -12,7 +16,7 @@ void getEepromAddresses()
  }
 
 /*
- * read values stored in eeprom and calculate values based on these
+ * read values stored in eeprom
  */
 
 void getEepromValues ()
