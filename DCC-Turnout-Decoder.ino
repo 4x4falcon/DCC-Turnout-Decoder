@@ -1,7 +1,5 @@
 //DCC_turnout_decoder
 
-// uncomment this for first run to initialize eeprom
-//#define FIRSTRUN
 
 //include the wire library
 #include <Wire.h>
@@ -30,13 +28,12 @@
 // buffer to hold serial commands
 String readString;
 
-void setup() {
+void setup()
+ {
 
   getEepromAddresses();
 
-#ifdef FIRSTRUN
   firstRun();
-#endif
   
   getEepromValues();
 
@@ -92,22 +89,24 @@ void setup() {
 }
 
 void loop()
-{
+ {
   DCC.loop();                     // process the dcc messages
 
     // see if there are serial commands
 
-  while (Serial.available()) {
+  while (Serial.available())
+   {
     char c = Serial.read();     //gets one byte from serial buffer
     readString += c;            //makes the string readString
     delay(2);                   //slow looping to allow buffer to fill with next character
-  }
+   }
 
   // act on serial commands
 
-  if (readString.length() >0) {
+  if (readString.length() >0)
+   {
     doSerialCommand(readString);
     readString="";              //empty for next input
-  } 
+   } 
 
-}
+ }

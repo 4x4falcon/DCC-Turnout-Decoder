@@ -1,12 +1,13 @@
 // CV structure
 
-struct CV {
+struct CV
+ {
   byte cv1;     // primary address
   byte cv7;     // version number
   byte cv8;     // manufacture id = diy = 13
-  byte cv29;    // different settings
+  byte cv29;    // different settings not currently used
   byte cv47;    // pulse length in micro seconds recomended 100uS if set to 255 ignored
-};
+ };
 
 CV cvStruct = { 3, 1, 13, 0, 100 };
 

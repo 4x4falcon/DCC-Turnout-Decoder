@@ -4,13 +4,11 @@
 
 void getEepromAddresses()
  {
-
   eepromDecoderCV1Address = EEPROM.getAddress(sizeof(cvStruct.cv1));               // decoder primary address
   eepromDecoderCV7Address = EEPROM.getAddress(sizeof(cvStruct.cv7));               // version number
   eepromDecoderCV8Address = EEPROM.getAddress(sizeof(cvStruct.cv8));               // manufacturer number = diy = 13
   eepromDecoderCV29Address = EEPROM.getAddress(sizeof(cvStruct.cv29));               // 
   eepromDecoderCV47Address = EEPROM.getAddress(sizeof(cvStruct.cv47));               // 
-
  }
 
 /*
