@@ -1,7 +1,7 @@
 //Functions.h
 
 void BasicAccDecoderPacket_Handler(int address, boolean activate, byte data) 
-{
+{ 
   Serial.print("    ");
   Serial.print(address);
   Serial.print(" - ");
@@ -82,7 +82,8 @@ void doSerialCommand(String readString)
       Serial.println(F("Close a turnout: <C address subaddress>\n"
                        "Throw a turnout: <T address subaddress>\n"
                        "Change decoder address: <W 1 address>\n"
-                       "Show current CVs: <>"));
+                       "Show current CVs: <>\n"
+                       "Change turnout pulse length: <W 47 microseconds>\n"));
      }
     else
      {
@@ -95,6 +96,8 @@ void doSerialCommand(String readString)
         Serial.println(EEPROM.readByte(eepromDecoderCV7Address));
         Serial.print(F("CV8 = "));
         Serial.println(EEPROM.readByte(eepromDecoderCV8Address));
+        Serial.print(F("CV47 = "));
+        Serial.println(EEPROM.readByte(eepromDecoderCV47Address));
        }
       else
        {
@@ -193,7 +196,17 @@ void doSerialCommand(String readString)
                }
               else
                {
-                Serial.println(F("Invalid cv number: should be <W 1 addr>"));
+                if (addr == 47)
+                 {
+                  cvStruct.cv47 = value;
+                  TURNOUT_DELAY = cvStruct.cv47;
+
+                  EEPROM.writeByte(eepromDecoderCV47Address, cvStruct.cv47);
+                 }
+                else
+                 {
+                  Serial.println(F("Invalid cv number: should be <W cv value> cv is 1 or 47"));
+                 }
                }
              }
             else
@@ -215,5 +228,7 @@ void firstRun() {
   EEPROM.writeByte(eepromDecoderCV1Address, cvStruct.cv1);
   EEPROM.writeByte(eepromDecoderCV7Address, cvStruct.cv7);
   EEPROM.writeByte(eepromDecoderCV8Address, cvStruct.cv8);
+  EEPROM.writeByte(eepromDecoderCV29Address, cvStruct.cv29);
+  EEPROM.writeByte(eepromDecoderCV47Address, cvStruct.cv47);
 }
 #endif

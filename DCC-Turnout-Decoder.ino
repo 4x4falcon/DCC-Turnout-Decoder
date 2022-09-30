@@ -21,14 +21,11 @@
 // Interrupt for DCC library
 #define DCC_INTERRUPT 0
 
-#define TURNOUT_DELAY 100   // should be less than 100uS for solenoids, longer for leds when testing.
-
 //include the DCC_Decoder library
 #include <DCC_Decoder.h>
 
 //include my functions
 #include "Functions.h"
-
 
 // buffer to hold serial commands
 String readString;
@@ -45,6 +42,8 @@ void setup() {
 
   DECODER_ADDRESS_1 = cvStruct.cv1;
   DECODER_ADDRESS_2 = DECODER_ADDRESS_1 + 1;
+
+  TURNOUT_DELAY = cvStruct.cv47;
 
   Serial.begin(115200); // Debug via terminal window at 9600 or 115200 
   Serial.print("Start decoders ");
