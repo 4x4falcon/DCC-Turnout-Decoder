@@ -1,9 +1,9 @@
 DCC Turnout Decoder for solenoid turnouts
 
-PCB available at:
+This is deprecated use this firmware instead:
 
-https://www.pcbway.com/project/shareproject/DCC_Turnout_Decoder_2288d9b4.html
+https://github.com/Rosscoetrain/DCC-Turnout-Decoder-2
 
-More details in docs folder
+This repository is no longer updated.  Kept for reference only.
 
 
